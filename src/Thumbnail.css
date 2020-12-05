@@ -1,0 +1,47 @@
+.thumbnail {
+  background-color: rgb(166, 125, 231);
+    border-radius: 20px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+.topic,
+.sender,
+.message {
+  margin: 0;
+  margin-left: 20px;
+}
+.owner {
+    
+  margin-left: 40px;
+  font-weight: 500;
+}
+.details {
+  margin-left: 40px;
+  font-size: 15px;
+  
+}
+.roomLink {
+  text-decoration: none;
+  color: rgb(44, 43, 43);
+}
+.head
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+h4
+{
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+.createdBy
+{
+    margin-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    font-size: 12px;
+}
