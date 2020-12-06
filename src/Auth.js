@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     app.auth().onAuthStateChanged(setUser);
   }, []);
+
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );

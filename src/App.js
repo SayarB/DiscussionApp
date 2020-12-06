@@ -20,7 +20,9 @@ function App() {
             <Route path="/account">
               <Account />
             </Route>
-            <Route path="/createRoom"></Route>
+            <Route path="/createRoom">
+              <CreateRoom />
+            </Route>
             <Route path="/">
               <Header />
               <Home />

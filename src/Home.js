@@ -3,47 +3,68 @@ import Thumbnail from "./Thumbnail";
 import "./Home.css";
 import firebase from "firebase";
 import { AuthContext } from "./Auth";
-import { app } from "./firebase";
+import { app, db } from "./firebase";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import Room from "./Room";
 
 function Home() {
   const { user } = useContext(AuthContext);
-
+  const [rooms, setRooms] = useState([]);
   const signOut = () => {
     if (user) app.auth().signOut();
   };
+  const getRooms = () => {
+    const ref = db.collection("rooms");
+    ref.onSnapshot((snapshot) => {
+      const items = [];
+      snapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      console.log(items);
+      setRooms(items);
+    });
+  };
+  const getUser = (id) => {
+    let name = "";
+    db.collection("users")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        name = doc.data().name.toString();
+        console.log(name);
+        return name;
+      })
+
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  useEffect(() => {
+    getRooms();
+  }, []);
   return (
     <div className="home">
       <div className="friends">
         <h1>friends</h1>
       </div>
       <div className="thumbnails">
-        <Thumbnail
-          id="123"
-          topic="Vaccine"
-          owner="Sayar"
-          details="hi we are talking about vaccine of corona virus"
-        />
-        <Thumbnail
-          id="123"
-          topic="Vaccine"
-          owner="Sayar"
-          details="hi we are talking about vaccine of corona virus"
-        />
-        <Thumbnail
-          id="121"
-          topic="Women Empowerment"
-          owner="Sayar"
-          details="hi we are talking about women empowerment"
-        />
+        {rooms.map((room) => (
+          <Thumbnail
+            id={room.id}
+            owner={getUser("4U0MBVGe3PM4aJTQMGPTM7JqmVH3")}
+            topic={room.Topic}
+            details={room.Desc}
+          />
+        ))}
       </div>
       <div className="user">
         {user && (
           <div>
             <img src={user?.photoURL} />
             <h3>{user?.displayName}</h3>
-            <h3 className="email">{user?.email}</h3>
+            <h3 className="email">{user?.email} </h3>
             <Link to="/account">
               <button>Account</button>
             </Link>

@@ -5,11 +5,18 @@ function Room() {
   const { id } = useParams();
 
   return (
-    <div>
-      <h1>Room: {id} </h1>
-      <Link to="/">
-        <button>Back</button>
-      </Link>
+    <div className="room">
+      <div className="room_header">
+        <div className="backButton">
+        <Link to="/">
+          <button>Back</button>
+        </Link>
+        </div>
+        <div className="room_headerTitle">
+          <h1 className="title"></h1>
+        </div>
+
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import "firebase/auth";
 import "firebase/firestore";
-import { app } from "./firebase";
+import { app, db } from "./firebase";
 import "./Login.css";
 import { AuthContext, AuthProvider } from "./Auth";
 
@@ -26,9 +26,21 @@ function Login() {
       firebase
         .auth()
         .signInWithPopup(provider)
+
         .then((result) => {
-          if (result) history.push("/");
+          console.log(result.user);
+          db.collection("users")
+            .doc(result.user.uid)
+            .set({
+              name: result.user.displayName,
+              email: result.user.email,
+              uid: result.user.uid,
+            })
+            .catch((err) => {
+              alert(err);
+            });
         })
+
         .catch((err) => alert(err.message));
     }
   };
