@@ -27,13 +27,13 @@ function Header() {
             </Link>
           </div>
         </div>
-        <Link className="header_link" to="/createRoom">
+        <Link className="header_link" to={user ? "/createRoom" : "/login"}>
           <AddCircleIcon className="header_link" />
         </Link>
         <Link classname="header_link">
           <ChatIcon className="header_link" />
         </Link>
-        <Link to={user? "/account": "/login"} classname="header_link">
+        <Link to={user ? "/account" : "/login"} classname="header_link">
           {user ? (
             <img src={user.photoURL} className="header_photo" alt="" />
           ) : (

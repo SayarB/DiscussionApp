@@ -7,6 +7,7 @@ import { app, db } from "./firebase";
 import { Link } from "react-router-dom";
 import Login from "./Login";
 import Room from "./Room";
+import { NotificationImportantTwoTone } from "@material-ui/icons";
 
 function Home() {
   const { user } = useContext(AuthContext);
@@ -25,21 +26,6 @@ function Home() {
       setRooms(items);
     });
   };
-  const getUser = (id) => {
-    let name = "";
-    db.collection("users")
-      .doc(id)
-      .get()
-      .then((doc) => {
-        name = doc.data().name.toString();
-        console.log(name);
-        return name;
-      })
-
-      .catch((err) => {
-        alert(err);
-      });
-  };
 
   useEffect(() => {
     getRooms();
@@ -51,12 +37,7 @@ function Home() {
       </div>
       <div className="thumbnails">
         {rooms.map((room) => (
-          <Thumbnail
-            id={room.id}
-            owner={getUser("4U0MBVGe3PM4aJTQMGPTM7JqmVH3")}
-            topic={room.Topic}
-            details={room.Desc}
-          />
+          <Thumbnail id={room.id} />
         ))}
       </div>
       <div className="user">

@@ -1,0 +1,95 @@
+.back_button {
+  height: 50px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 0;
+  background-color: rgb(180, 139, 219);
+  margin: 20px;
+}
+.room_header {
+  display: flex;
+  background-color: white;
+  margin-top: 20px;
+}
+.room_headerTitle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 50px;
+  border-left: 2px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.room_headerTitle > h2 {
+  margin-top: 5px;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+.description {
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+.creator {
+  margin-top: 0px;
+  align-self: flex-end;
+  font-weight: 500;
+}
+.room {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+.room_chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+.chatInput {
+  flex: 1;
+  border-radius: 20px;
+  border-width: 1px;
+  padding-top: 5px;
+  height: 20px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  margin-right: 10px;
+  margin-left: 0;
+  font-size: 20px;
+  margin-top: 0px;
+}
+.chatArea {
+  height: 100%;
+  border: 2px solid purple;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #ebcfe6;
+}
+.input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.sendButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: white;
+  margin: 0;
+}
