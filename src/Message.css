@@ -1,0 +1,41 @@
+.message,
+.sent {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: fit-content;
+  max-width: 200px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.message_textPortion > h4 {
+  margin: 0;
+  font-size: 12px;
+}
+.message_textPortion {
+  background-color: rgb(245, 245, 235);
+  padding: 5px 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+  word-wrap: break-word;
+}
+.message_text {
+  margin: 0;
+  font-size: 15px;
+  max-width: 100px;
+}
+.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.senttext {
+  background-color: rgb(33, 92, 170);
+  color: white;
+  padding: 5px 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+}

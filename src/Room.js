@@ -1,19 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import { db, app } from "./firebase";
 import SendIcon from "@material-ui/icons/Send";
+import firebase from "firebase";
 import "./Rooms.css";
+import Chat from "./Chat";
 function Room() {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [topic, setTopic] = useState("");
   const [ownerID, setOwnerID] = useState("");
   const [owner, setOwner] = useState("");
-
+  const [message, setMessage] = useState("");
   const [desc, setDesc] = useState("");
-
-  useEffect(() => {
+  const dummy = useRef();
+  
+  useEffect((e) => {
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
     console.log(user?.uid);
     db.collection("rooms")
       .doc(id)
@@ -29,6 +33,25 @@ function Room() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    if (message !== "") {
+      await db
+        .collection("rooms")
+        .doc(id)
+        .collection("messages")
+        .doc()
+        .set({
+          senderID: user?.uid,
+          text: message,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => setMessage(""));
+      dummy.current.scrollIntoView({ behaviour: "smooth" });
+    }
+  };
 
   return (
     <div className="room">
@@ -49,13 +72,21 @@ function Room() {
         </div>
       </div>
       <div className="room_chat">
-        <div className="chatArea">Chat</div>
-        <div className="input">
-          <input type="text" className="chatInput" />
-          <button className="sendButton">
+        <div className="chatArea">
+          <Chat id={id} />
+          <div ref={dummy}></div>
+        </div>
+        <form className="input">
+          <input
+            type="text"
+            className="chatInput"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button className="sendButton" type="submit" onClick={sendMessage}>
             <SendIcon />
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

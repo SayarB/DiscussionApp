@@ -1,0 +1,22 @@
+.createRoom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: white;
+  align-self: center;
+  margin-top: 20%;
+}
+.createRoom > div > input {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  background-color: rgba(0, 0, 0, 0);
+}
+.createRoom > div > input:active {
+  border: none;
+}
+.createRoom > div {
+  width: 80%;
+}

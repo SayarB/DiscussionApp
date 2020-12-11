@@ -78,6 +78,7 @@
   margin-top: 10px;
   border-radius: 10px;
   background-color: #ebcfe6;
+  overflow-y: scroll;
 }
 .input {
   flex: 1;
@@ -92,4 +93,16 @@
   border-width: 0px;
   background-color: white;
   margin: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius:10px;
 }

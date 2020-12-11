@@ -35,10 +35,12 @@ function Login() {
               name: result.user.displayName,
               email: result.user.email,
               uid: result.user.uid,
+              photo: result.user.photoURL,
             })
             .catch((err) => {
               alert(err);
             });
+          history.push("/");
         })
 
         .catch((err) => alert(err.message));
