@@ -24,7 +24,7 @@ function App() {
               <CreateRoom />
             </Route>
             <Route path="/">
-              <Header />
+              <Header className="Header" />
               <Home />
             </Route>
           </Switch>

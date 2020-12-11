@@ -5,7 +5,9 @@
   width: 50%;
   background-color: white;
   align-self: center;
-  margin-top: 20%;
+  margin-top: 10%;
+  min-width: 300px;
+  max-width: 500px;
 }
 .createRoom > div > input {
   width: 100%;

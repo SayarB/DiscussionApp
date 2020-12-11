@@ -32,9 +32,6 @@ function Home() {
   }, []);
   return (
     <div className="home">
-      <div className="friends">
-        <h1>friends</h1>
-      </div>
       <div className="thumbnails">
         {rooms.map((room) => (
           <Thumbnail id={room.id} />

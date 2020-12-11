@@ -1,10 +1,11 @@
 .back_button {
   height: 50px;
-  width: 100px;
+  width: 10vw;
+  min-width: 10vw;
   border-radius: 20px;
   border-width: 0;
   background-color: rgb(180, 139, 219);
-  margin: 20px;
+  margin: 2vw;
 }
 .room_header {
   display: flex;
@@ -16,10 +17,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 50px;
-  border-left: 2px solid black;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-left: 2vw;
+  border-left: 1px solid black;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 .title {
   margin-top: 5px;
@@ -30,7 +31,7 @@
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 0px;
-  margin-left: 10px;
+  margin-left: 1vw;
 }
 .description {
   font-weight: 400;
@@ -51,23 +52,23 @@
   max-width: 1000px;
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 100%;
 }
 .room_chat {
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 70vh;
 }
 .chatInput {
-  flex: 1;
+  width: 60vw;
   border-radius: 20px;
   border-width: 1px;
   padding-top: 5px;
   height: 20px;
   padding-bottom: 5px;
-  padding-left: 10px;
-  margin-right: 10px;
+  padding-left: auto;
+  margin-right: auto;
   margin-left: 0;
   font-size: 20px;
   margin-top: 0px;
@@ -84,7 +85,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 1vh;
 }
 .sendButton {
   width: 40px;
@@ -96,13 +97,11 @@
 }
 ::-webkit-scrollbar {
   width: 10px;
-  
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  
+  background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius:10px;
+  background: #888;
+  border-radius: 10px;
 }

@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import { db, app } from "./firebase";
@@ -7,6 +13,7 @@ import firebase from "firebase";
 import "./Rooms.css";
 import Chat from "./Chat";
 function Room() {
+  const dummy = useRef(null);
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [topic, setTopic] = useState("");
@@ -14,10 +21,8 @@ function Room() {
   const [owner, setOwner] = useState("");
   const [message, setMessage] = useState("");
   const [desc, setDesc] = useState("");
-  const dummy = useRef();
-  
-  useEffect((e) => {
-    dummy.current.scrollIntoView({ behaviour: "smooth" });
+
+  useEffect(() => {
     console.log(user?.uid);
     db.collection("rooms")
       .doc(id)
@@ -32,7 +37,9 @@ function Room() {
           .then((result) => setOwner(result.data().name));
       })
       .catch((err) => console.log(err));
-  }, []);
+      dummy.current.scrollIntoView();
+  });
+ 
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -49,8 +56,8 @@ function Room() {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then(() => setMessage(""));
-      dummy.current.scrollIntoView({ behaviour: "smooth" });
     }
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
   };
 
   return (
@@ -74,7 +81,7 @@ function Room() {
       <div className="room_chat">
         <div className="chatArea">
           <Chat id={id} />
-          <div ref={dummy}></div>
+          <div ref={dummy} />
         </div>
         <form className="input">
           <input

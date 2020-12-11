@@ -14,31 +14,37 @@ function Header() {
   return (
     <div classname="header">
       <nav className="header_navbar">
-        <img
-          src="https://i.pinimg.com/originals/26/49/29/264929a953e1206c03997efcea6d463d.jpg"
-          alt=""
-          className="header_logo"
-        />
-        <div className="header_search">
+        <div className="header_logo">
+          <img
+            src="https://i.pinimg.com/originals/26/49/29/264929a953e1206c03997efcea6d463d.jpg"
+            alt=""
+          />
+          <p>iscuss</p>
+        </div>
+
+        {/*<div className="header_search">
           <div className="searchContainer">
             <input type="text" className="header_searchbar" />
             <Link className="header_searchLink">
               <SearchIcon className="header_searchIcon" />
             </Link>
           </div>
-        </div>
+  </div>*/}
         <Link className="header_link" to={user ? "/createRoom" : "/login"}>
-          <AddCircleIcon className="header_link" />
+          <div className="header_link">
+            <AddCircleIcon className="addCircle" />
+            <p className="create_room">Create Room</p>
+          </div>
         </Link>
-        <Link classname="header_link">
-          <ChatIcon className="header_link" />
-        </Link>
+
         <Link to={user ? "/account" : "/login"} classname="header_link">
-          {user ? (
-            <img src={user.photoURL} className="header_photo" alt="" />
-          ) : (
-            <PersonOutlineIcon className="header_link" />
-          )}
+          <div className="header_link">
+            {user ? (
+              <img src={user.photoURL} className="header_photo" alt="" />
+            ) : (
+              <PersonOutlineIcon className="header_link" />
+            )}
+          </div>
         </Link>
       </nav>
     </div>
