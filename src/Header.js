@@ -15,11 +15,7 @@ function Header() {
     <div classname="header">
       <nav className="header_navbar">
         <div className="header_logo">
-          <img
-            src="https://i.pinimg.com/originals/26/49/29/264929a953e1206c03997efcea6d463d.jpg"
-            alt=""
-          />
-          <p>iscuss</p>
+          <h1 className="header_title">Coffee House</h1>
         </div>
 
         {/*<div className="header_search">
@@ -30,7 +26,7 @@ function Header() {
             </Link>
           </div>
   </div>*/}
-        <Link className="header_link" to={user ? "/createRoom" : "/login"}>
+        <Link className="header_link" to="/createRoom">
           <div className="header_link">
             <AddCircleIcon className="addCircle" />
             <p className="create_room">Create Room</p>

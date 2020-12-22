@@ -5,15 +5,18 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "./Auth";
+import Header from "./Header";
 import { db, app } from "./firebase";
 import SendIcon from "@material-ui/icons/Send";
+import Login from "./Login";
 import firebase from "firebase";
 import "./Rooms.css";
 import Chat from "./Chat";
 function Room() {
   const dummy = useRef(null);
+  const history = useHistory();
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [topic, setTopic] = useState("");
@@ -21,25 +24,29 @@ function Room() {
   const [owner, setOwner] = useState("");
   const [message, setMessage] = useState("");
   const [desc, setDesc] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    console.log(user?.uid);
     db.collection("rooms")
       .doc(id)
       .get()
       .then((res) => {
-        setOwnerID(res.data().creatorID);
-        setTopic(res.data().Topic);
-        setDesc(res.data().Desc);
-        db.collection("users")
-          .doc(res.data().creatorID)
-          .get()
-          .then((result) => setOwner(result.data().name));
+        if (res) {
+          setOwnerID(res.data().creatorID);
+          setTopic(res.data().Topic);
+          setDesc(res.data().Desc);
+          setPassword(res.data().password);
+          db.collection("users")
+            .doc(res.data().creatorID)
+            .get()
+            .then((result) => setOwner(result.data().name));
+        } else {
+          history.goBack();
+        }
       })
       .catch((err) => console.log(err));
-      dummy.current.scrollIntoView();
+    if (user) dummy.current.scrollIntoView();
   });
- 
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -60,43 +67,48 @@ function Room() {
     dummy.current.scrollIntoView({ behaviour: "smooth" });
   };
 
-  return (
-    <div className="room">
-      <div className="room_header">
-        <div className="backButton">
-          <Link to="/">
-            <button className="back_button">Back</button>
-          </Link>
-        </div>
-        <div className="room_headerTitle">
-          <h1 className="title">{topic}</h1>
-          <h2>Description</h2>
+  if (user) {
+    return (
+      <div className="room">
+        
+        <div className="room_header">
+          <div className="backButton">
+            <Link to="/">
+              <button className="back_button">Back</button>
+            </Link>
+          </div>
+          <div className="room_headerTitle">
+            <h1 className="title">{topic}</h1>
+            <h2>Description</h2>
 
-          <h3 className="description">{desc}</h3>
-          <p className="creator">
-            Created By <span>{user?.uid == ownerID ? "You" : owner}</span>
-          </p>
+            <h3 className="description">{desc}</h3>
+            <p className="creator">
+              Created By <span>{user?.uid == ownerID ? "You" : owner}</span>
+            </p>
+          </div>
+        </div>
+        <div className="room_chat">
+          <div className="chatArea">
+            <Chat id={id} />
+            <div ref={dummy} />
+          </div>
+          <form className="input">
+            <input
+              type="text"
+              className="chatInput"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button className="sendButton" type="submit" onClick={sendMessage}>
+              <SendIcon />
+            </button>
+          </form>
         </div>
       </div>
-      <div className="room_chat">
-        <div className="chatArea">
-          <Chat id={id} />
-          <div ref={dummy} />
-        </div>
-        <form className="input">
-          <input
-            type="text"
-            className="chatInput"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button className="sendButton" type="submit" onClick={sendMessage}>
-            <SendIcon />
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <Login hasOrigin={true} />;
+  }
 }
 
 export default Room;

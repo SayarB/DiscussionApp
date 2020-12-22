@@ -12,9 +12,7 @@ import { NotificationImportantTwoTone } from "@material-ui/icons";
 function Home() {
   const { user } = useContext(AuthContext);
   const [rooms, setRooms] = useState([]);
-  const signOut = () => {
-    if (user) app.auth().signOut();
-  };
+
   const getRooms = () => {
     const ref = db.collection("rooms");
     ref.onSnapshot((snapshot) => {
@@ -36,20 +34,6 @@ function Home() {
         {rooms.map((room) => (
           <Thumbnail id={room.id} />
         ))}
-      </div>
-      <div className="user">
-        {user && (
-          <div>
-            <img src={user?.photoURL} />
-            <h3>{user?.displayName}</h3>
-            <h3 className="email">{user?.email} </h3>
-            <Link to="/account">
-              <button>Account</button>
-            </Link>
-
-            <button onClick={signOut}>Sign Out</button>
-          </div>
-        )}
       </div>
     </div>
   );

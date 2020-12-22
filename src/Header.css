@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Langar&display=swap");
+
 .header {
   width: 100%;
   background-color: black;
   height: 30vh;
   z-index: 10;
 }
-.header > * {
-  margin-left: auto;
-  margin-right: auto;
+.header_title {
+  font-family: "Langar", cursive;
 }
 .header_logo > img {
   width: 100px;
@@ -20,7 +21,7 @@
   font-size: 2vh;
 }
 .header_navbar {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.438);
   display: flex;
   width: 100%;
   align-items: center;
@@ -49,10 +50,12 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  background-color: white;
-  padding-left: 0;
-  padding-right: 0;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 1vh;
   width: fit-content;
+}
+.header_link:hover {
+  background-color: rgba(255, 255, 255, 0.658);
 }
 .header_link > p {
   margin: 0;
@@ -84,6 +87,7 @@
 .header_photo {
   width: 35px;
   border-radius: 50%;
+  padding: 1vh;
 }
 .addCircle {
   margin: 0;

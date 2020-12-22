@@ -1,0 +1,44 @@
+.account {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vh;
+}
+
+.user {
+  flex: 1;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.664);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+}
+.user > * {
+  padding-top: 20px;
+  margin-top: 20px;
+  font-size: 2vh;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.email {
+  font-size: 2vh;
+}
+button {
+  margin: 30px;
+  padding: 2vh;
+}
+.signOutButton {
+  padding: 2vh;
+  background-color: rgba(255, 255, 255, 0.664);
+  width: 100%;
+  border-width: 0px;
+  margin: 0;
+  font-size: 2vh;
+}
+.signOutButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.userAcccount {
+  width: 100%;
+}

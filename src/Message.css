@@ -4,6 +4,7 @@
   flex-direction: column;
   margin: 20px;
   width: fit-content;
+  min-width: 20vh;
   max-width: 200px;
 }
 
@@ -17,9 +18,10 @@
   font-size: 12px;
 }
 .message_textPortion {
-  background-color: rgb(245, 245, 235);
+  background-color: rgb(211, 225, 255);
   padding: 5px 20px;
   margin-top: 5px;
+
   border-radius: 20px;
   word-wrap: break-word;
 }
@@ -38,4 +40,7 @@
   padding: 5px 20px;
   margin-top: 5px;
   border-radius: 20px;
+}
+#root {
+  height: 100%;
 }

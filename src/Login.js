@@ -13,7 +13,7 @@ import { app, db } from "./firebase";
 import "./Login.css";
 import { AuthContext, AuthProvider } from "./Auth";
 
-function Login() {
+function Login({ hasOrigin }) {
   const history = useHistory();
 
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -40,28 +40,31 @@ function Login() {
             .catch((err) => {
               alert(err);
             });
-          history.push("/");
         })
 
         .catch((err) => alert(err.message));
     }
+    if (!hasOrigin) history.push("/");
   };
+
   const signOut = () => {
     app.auth().signOut();
   };
   return (
-    <div className="login">
-      <h1 className="heading">Login</h1>
+    <div className="login_container">
+      <div className="login">
+        <h1 className="heading">Login</h1>
 
-      {user && <p>{user.email}</p>}
-      <button className="googleSignIn" onClick={googleSignIn}>
-        Sign In With
-        <img
-          className="googleLogo"
-          src="http://pngimg.com/uploads/google/google_PNG19635.png"
-          alt=""
-        />
-      </button>
+        {user && <p>{user.email}</p>}
+        <button className="googleSignIn" onClick={googleSignIn}>
+          Sign In With
+          <img
+            className="googleLogo"
+            src="http://pngimg.com/uploads/google/google_PNG19635.png"
+            alt=""
+          />
+        </button>
+      </div>
     </div>
   );
 }

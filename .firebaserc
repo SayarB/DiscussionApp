@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "discussion-app-d3cbc"
+  },
+  "targets": {
+    "discussion-app-d3cbc": {
+      "hosting": {
+        "discussion": [
+          "discussion-app-d3cbc"
+        ],
+        "coffee": [
+          "coffee-house"
+        ]
+      }
+    }
   }
 }
