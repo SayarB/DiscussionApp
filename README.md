@@ -15,4 +15,4 @@ The private rooms require password for anyone except the creator.
 ## Contributing
 
 Fork the repo and clone the project on your computer. 
-Go into the folder and on the terminal run the command ````npm start``` to get the development server up and running for previewing on the localhost. 
+Go into the folder and on the terminal run the command ```npm start``` to get the development server up and running for previewing on the localhost. 
